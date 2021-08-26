@@ -26,24 +26,25 @@ public class Homework2 {
         //Задача 2
         int clientOS = 0;
         int clientDeviceYear = 2015;
-        if (clientOS == 1 && clientDeviceYear < 2019) {
-            System.out.println("Установите Lite-версию приложения для iOS по ссылке");
-        } else if (clientOS == 1 && clientDeviceYear >= 2019) {
-            System.out.println("Установите полную версию приложения для iOS по ссылке");
-        } else if (clientOS == 0 && clientDeviceYear < 2019) {
-            System.out.println("Установите Lite-версию приложения для Android по ссылке");
+        if (clientOS == 1) {
+            if (clientDeviceYear < 2019) {
+                System.out.println("Установите Lite-версию приложения для iOS по ссылке");
+            } else {
+                System.out.println("Установите полную версию приложения для iOS по ссылке");
+            }
         } else {
-            System.out.println("Установите полную версию приложения для Android по ссылке");
+            if (clientDeviceYear < 2019) {
+                System.out.println("Установите Lite-версию приложения для Android по ссылке");
+            } else {
+                System.out.println("Установите полную версию приложения для Android по ссылке");
+            }
         }
     }
 
     private static void task3() {
         //Задача 3
-        int year = 2100;
-        int leapYear4 = 4;
-        int leapYear400 = 400;
-        int notLeapYear = 100;
-        if ((year % leapYear4 == 0 && year % notLeapYear != 0) || (year % leapYear400 == 0)) {
+        int year = 2104;
+        if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
             System.out.println(year + " год является високосным");
         } else {
             System.out.println(year + " год не является високосным");
@@ -52,20 +53,15 @@ public class Homework2 {
 
     private static void task4() {
         //Задача 4
-        int deliveryTime = 0;
+        int deliveryTime = 1;
         int deliveryDistance = 95;
-        if (deliveryDistance < 20) {
+        if (deliveryDistance > 20) {
             deliveryTime++;
-            System.out.println("Доставка на расстояние " + deliveryDistance + " км займет " + deliveryTime + " день.");
-        } else if (deliveryDistance >= 20 && deliveryDistance < 60) {
-            deliveryTime = deliveryTime + 2;
-            System.out.println("Доставка на расстояние " + deliveryDistance + " км займет " + deliveryTime + " дня.");
-        } else if (deliveryDistance >= 60 && deliveryDistance < 100) {
-            deliveryTime = deliveryTime + 3;
-            System.out.println("Доставка на расстояние " + deliveryDistance + " км займет " + deliveryTime + " дня.");
-        } else {
-            System.out.println("Сожалеем, но в данный момент доставка на ваш адрес не осуществляется, воспользуйтесь услугой самовывоза");
         }
+        if (deliveryDistance > 60) {
+            deliveryTime++;
+        }
+        System.out.println("Доставка на расстояние " + deliveryDistance + " км займет " + deliveryTime + " дня.");
     }
 
     private static void task5() {
@@ -106,7 +102,6 @@ public class Homework2 {
         double adultRate = 3;
         double middleSalary = 50_000;
         double highSalary = 80_000;
-        double lowClassRate = 1;
         double middleClassRate = 1.2;
         double highClassRate = 1.5;
         double creditLimit = 0;
@@ -115,12 +110,10 @@ public class Homework2 {
         } else {
             creditLimit = salary * adultRate;
         }
-        if (salary >= middleSalary && salary <= highSalary) {
-            creditLimit = creditLimit * middleClassRate;
-        } else if (salary > highSalary) {
+        if (salary >= highSalary) {
             creditLimit = creditLimit * highClassRate;
-        } else {
-            creditLimit = creditLimit * lowClassRate;
+        } else if (salary >= middleSalary) {
+            creditLimit = creditLimit * middleClassRate;
         }
         System.out.println("Мы готовы выдать вам кредитную карту с лимитом " + creditLimit + " рублей");
     }
@@ -139,12 +132,12 @@ public class Homework2 {
         double highSalaryRate = 0.7;
         double maxPaymentPercent = 50;
         if (age < youngAge) {
-            baseRate = baseRate + youngRate;
-        } else if (age >= youngAge && age <= middleAge) {
-            baseRate = baseRate + middleRate;
+            baseRate += youngRate;
+        } else if (age >= youngAge && age < middleAge) {
+            baseRate += middleRate;
         }
         if (salary > 80000) {
-            baseRate = baseRate - highSalaryRate;
+            baseRate -= highSalaryRate;
         }
         double monthlyPayment = (wantedSum + wantedSum / 100 * baseRate) / creditTerm;
         double maxMonthlyPayment = salary / 100 * maxPaymentPercent;
@@ -155,5 +148,4 @@ public class Homework2 {
         }
     }
 }
-
 
