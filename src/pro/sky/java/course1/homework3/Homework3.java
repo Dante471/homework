@@ -70,6 +70,7 @@ public class Homework3 {
             System.out.print(a + " " + b + " ");
             a += b;
             b += a;
+
         }
     }
 }
