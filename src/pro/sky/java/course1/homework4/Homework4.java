@@ -39,14 +39,14 @@ public class Homework4 {
     private static void task2() {
         //Задача 2
         int[] expenses = generateRandomArray();
-        int maxExpenses = -1;
-        int minExpenses = 0;
-        for (int i = 0; i < expenses.length; i++) {
-            if (maxExpenses < expenses[i]) {
-                maxExpenses = expenses[i];
-                minExpenses = maxExpenses++;
-            } else if (minExpenses > expenses[i]) {
-                minExpenses = expenses[i];
+        int maxExpenses = 0;
+        int minExpenses = expenses[0];
+        for (int expense : expenses) {
+            if (maxExpenses < expense) {
+                maxExpenses = expense;
+            }
+            if (expense < minExpenses) {
+                minExpenses = expense;
             }
         }
         System.out.println("Максимальные затраты за день составляют " + maxExpenses + " рублей.");
@@ -81,11 +81,8 @@ public class Homework4 {
         //Задача 5
         int[][] matrix = new int[3][3];
         for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[0].length; j++) {
-                if (j == i || j + i == matrix.length - 1) {
-                    matrix[j][i] = 1;
-                }
-            }
+            matrix[i][i] = 1;
+            matrix[i][matrix.length - i - 1] = 1;
         }
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[0].length; j++) {
@@ -99,12 +96,12 @@ public class Homework4 {
     private static void task6() {
         //Задача 6
         int[] arr = {5, 4, 3, 2, 1};
-        int[] arrSort = new int[5];
+        int[] arrReverse = new int[5];
         for (int i = 0; i < arr.length; i++) {
-            arrSort[i] = arr[arr.length - i - 1];
+            arrReverse[i] = arr[arr.length - i - 1];
         }
-        System.out.println(java.util.Arrays.toString(arr));
-        System.out.println(java.util.Arrays.toString(arrSort));
+        System.out.println(Arrays.toString(arr));
+        System.out.println(Arrays.toString(arrReverse));
         System.out.println("***");
     }
 
@@ -113,34 +110,45 @@ public class Homework4 {
         int[] arr = {5, 4, 3, 2, 1};
         String b = Arrays.toString(arr);
         System.out.println(b);
-        Arrays.sort(arr);
+        for (int i = 0; i < arr.length / 2; i++) {
+            int t = arr[i];
+            arr[i] = arr[arr.length - i - 1];
+            arr[arr.length - i - 1] = t;
+        }
         System.out.println(Arrays.toString(arr));
         System.out.println("***");
     }
 
     private static void task8() {
         //Задача 8
-        int[] arr = {-6, 4, 5, -8, 8, 10, 1, -7, 12, 2};
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = 0; j < arr.length; j++) {
-                if (arr[i] + arr[j] == -2) {
-                    System.out.println("Числа " + arr[i] + " и " + arr[j]);
-                }
+        int[] arr = {-6, 2, 5, -8, 8, 10, 4, -7, 12, 1};
+        Arrays.sort(arr);
+        for (int i = 0, t = arr.length - 1; t - 1 > 0; ) {
+            if (arr[t] + arr[i] == -2) {
+                System.out.println("Числа " + arr[i] + " и " + arr[t]);
                 break;
+            }
+            t--;
+            if (t - 1 == 1) {
+                t = arr.length - 1;
+                i++;
             }
         }
         System.out.println("***");
-
     }
 
     private static void task9() {
         //Задача 9
-        int[] arr = {-6, 4, 5, -8, 8, 10, 1, -7, 12, 2};
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = 0; j < arr.length; j++) {
-                if (arr[i] + arr[j] == -2) {
-                    System.out.println("Числа " + arr[i] + " и " + arr[j]);
-                }
+        int[] arr = {-6, 2, 5, -8, 8, 10, 4, -7, 12, 1};
+        Arrays.sort(arr);
+        for (int i = 0, t = arr.length - 1; t - 1 > 0 && i < arr.length; ) {
+            if (arr[t] + arr[i] == -2) {
+                System.out.println("Числа " + arr[i] + " и " + arr[t]);
+            }
+            t--;
+            if (t - 1 == 1) {
+                t = arr.length - 1;
+                i++;
             }
         }
     }
