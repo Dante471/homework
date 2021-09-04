@@ -1,7 +1,5 @@
 package pro.sky.java.course1.homework5;
 
-import java.util.Arrays;
-
 public class Homework5 {
 
     public static void main(String[] args) {
@@ -51,16 +49,19 @@ public class Homework5 {
     private static void task6() {
         //Задача 6
         String fullNameLower = "ivanov ivan ivanovich";
-        char lit1 = fullNameLower.charAt(0);
+        int i1 = 0;
+        int i2 = fullNameLower.indexOf(' ') + 1;
+        int i3 = fullNameLower.lastIndexOf(' ') + 1;
+        char lit1 = fullNameLower.charAt(i1);
         char litUp1 = Character.toUpperCase(lit1);
-        char lit2 = fullNameLower.charAt(fullNameLower.indexOf(' ') + 1);
+        char lit2 = fullNameLower.charAt(i2);
         char litUp2 = Character.toUpperCase(lit2);
-        char lit3 = fullNameLower.charAt(fullNameLower.lastIndexOf(' ') + 1);
+        char lit3 = fullNameLower.charAt(i3);
         char litUp3 = Character.toUpperCase(lit3);
         StringBuilder s = new StringBuilder(fullNameLower);
-        s.setCharAt(0, litUp1);
-        s.setCharAt(fullNameLower.indexOf(' ') + 1, litUp2);
-        s.setCharAt(fullNameLower.lastIndexOf(' ') + 1, litUp3);
+        s.setCharAt(i1, litUp1);
+        s.setCharAt(i2, litUp2);
+        s.setCharAt(i3, litUp3);
         System.out.println(s);
     }
 
@@ -68,25 +69,24 @@ public class Homework5 {
         //Задача 7
         String s1 = "135";
         String s2 = "246";
-        String sum = s1 + s2;
-        char[] arr = sum.toCharArray();
-        Arrays.sort(arr);
-        String sortedSum = new String(arr);
-        System.out.println(sortedSum);
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < s1.length(); i++) {
+            sb.append(s1.charAt(i));
+            sb.append(s2.charAt(i));
+        }
+        System.out.println(sb);
     }
 
     private static void task8() {
         //Задача 8
         String doubles = "aabccddefgghiijjkk";
-        String addition = doubles + "0";
-        char[] sb = addition.toCharArray();
-        for (int i = 1; i < sb.length - 1; i++) {
-            if (sb[i + 1] != sb[i]) {
-                sb[i] = '0';
+        char[] arr = doubles.toCharArray();
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < arr.length - 1; i++) {
+            if (arr[i] == arr[i + 1]) {
+                sb.append(arr[i]);
             }
         }
-        String zeros = new String(sb);
-        String completed = zeros.replace("0", "");
-        System.out.println(completed);
+        System.out.println(sb);
     }
 }
