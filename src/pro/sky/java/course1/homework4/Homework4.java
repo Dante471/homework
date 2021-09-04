@@ -121,18 +121,15 @@ public class Homework4 {
 
     private static void task8() {
         //Задача 8
-        //Задача 9
         int[] arr = {-6, 2, 5, -8, 8, 10, 4, -7, 12, 1};
         Arrays.sort(arr);
-        for (int i = 0, t = arr.length - 1; t - 1 > 0 && i < arr.length - 1; ) {
-            if (Math.abs(arr[i]) < Math.abs(arr[t])) {
+        for (int i = 0, t = arr.length - 1; t - 1 > i && i < arr.length - 1; ) {
+            if (arr[i] + arr[t] > -2) {
                 t--;
-            } else if (Math.abs(arr[i]) >= Math.abs(arr[t])) {
+            } else if (arr[i] + arr[t] < -2) {
                 i++;
-            }
-            if (arr[t] + arr[i] == -2) {
+            } else {
                 System.out.println("Числа " + arr[i] + " и " + arr[t]);
-                t--;
                 break;
             }
         }
@@ -143,13 +140,12 @@ public class Homework4 {
         //Задача 9
         int[] arr = {-6, 2, 5, -8, 8, 10, 4, -7, 12, 1};
         Arrays.sort(arr);
-        for (int i = 0, t = arr.length - 1; t - 1 > 0 && i < arr.length - 1; ) {
-            if (Math.abs(arr[i]) < Math.abs(arr[t])) {
+        for (int i = 0, t = arr.length - 1; t - 1 > i && i < arr.length - 1; ) {
+            if (arr[i] + arr[t] > -2) {
                 t--;
-            } else if (Math.abs(arr[i]) >= Math.abs(arr[t])) {
+            } else if (arr[i] + arr[t] < -2) {
                 i++;
-            }
-            if (arr[t] + arr[i] == -2) {
+            } else {
                 System.out.println("Числа " + arr[i] + " и " + arr[t]);
                 t--;
             }
