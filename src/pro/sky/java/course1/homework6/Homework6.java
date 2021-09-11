@@ -95,25 +95,25 @@ public class Homework6 {
 
     public static void main(String[] args) {
         //task1
-        Scanner in = new Scanner(System.in);
+        Scanner input = new Scanner(System.in);
         System.out.print("Enter the year: ");
-        int y = in.nextInt();
+        int y = input.nextInt();
         checkYear(y);
         //task2
         System.out.print("Enter the year of manufacture of the device: ");
-        int deviceYear = in.nextInt();
+        int deviceYear = input.nextInt();
         System.out.print("Enter 0 if you have Android OS or 1 if iOS: ");
-        int deviceOS = in.nextInt();
+        int deviceOS = input.nextInt();
         checkOS(deviceYear, deviceOS);
         //task3
         System.out.print("Enter the distance: ");
-        int dist = in.nextInt();
+        int dist = input.nextInt();
         System.out.printf("Delivery will take %d days.\n", calcDeliveryTime(dist));
         //task4
         System.out.print("Enter some line: ");
-        String s = in.next();
+        String s = input.next();
         checkDoubles(s);
-        in.close();
+        input.close();
         //task5
         int[] array = {7, 4, 5, 8, 1};
         reverseArrayOrder(array);
