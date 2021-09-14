@@ -1,17 +1,19 @@
 package pro.sky.java.course1.homework7;
 
+import java.time.LocalDate;
+
 public class Book {
     private final String name;
-    private final String authorName;
+    private final Author authorName;
     private int publishingYear;
 
-    public Book(String authorName, int publishingYear, String name) {
+    public Book(Author authorName, int publishingYear, String name) {
         this.name = name;
         this.authorName = authorName;
         this.publishingYear = publishingYear;
     }
 
-    public Book(String authorName) {
+    public Book(Author authorName) {
         this(authorName, 0, "No book name");
     }
 
@@ -20,7 +22,7 @@ public class Book {
     }
 
     public String getAuthorName() {
-        return authorName;
+        return authorName.getFirstName() + " " + authorName.getSecondName();
     }
 
     public int getPublishingYear() {
@@ -28,6 +30,14 @@ public class Book {
     }
 
     public void setPublishingYear(int publishingYear) {
-        this.publishingYear = publishingYear;
+        if (publishingYear > 0 && publishingYear < LocalDate.now().getYear()) {
+            this.publishingYear = publishingYear;
+        } else {
+            try {
+                throw new Exception("Invalid value entered");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

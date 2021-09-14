@@ -9,7 +9,12 @@ public class Author {
         this.secondName = secondName;
     }
 
-    public String getName() {
-        return firstName + " " + secondName;
+    public String getFirstName() {
+        return firstName;
     }
+
+    public String getSecondName() {
+        return secondName;
+    }
+
 }
