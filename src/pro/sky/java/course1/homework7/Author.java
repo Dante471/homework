@@ -16,5 +16,5 @@ public class Author {
     public String getSecondName() {
         return secondName;
     }
-
 }
+

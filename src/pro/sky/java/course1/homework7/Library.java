@@ -15,12 +15,8 @@ public class Library {
                 return index;
             }
         }
-        try {
-            throw new Exception("The library is full");
-        } catch (Exception e) {
-            e.printStackTrace();
-            return bookshelf.length;
-        }
+        System.out.println("Library is full");
+        return bookshelf.length;
     }
 
     public void addBook(Book book) {
@@ -29,34 +25,30 @@ public class Library {
     }
 
     public void printAll() {
-        for (int index = 0; index < bookshelf.length; index++) {
-            System.out.printf("%s: %s: %d\n", bookshelf[index].getAuthorName(), bookshelf[index].getName(), bookshelf[index].getPublishingYear());
+        for (Book book : bookshelf) {
+            System.out.printf("%s: %s: %d\n", book.authorToString(), book.getName(), book.getPublishingYear());
         }
     }
 
     public void printByName(String name) {
-        for (int index = 0; index < bookshelf.length; index++) {
-            if (name.equals(bookshelf[index].getName())) {
-                System.out.printf("%s by %s was published in %d\n", bookshelf[index].getName(), bookshelf[index].getAuthorName(), bookshelf[index].getPublishingYear());
-                break;
+        for (Book book : bookshelf) {
+            if (name.equals(book.getName())) {
+                System.out.printf("%s by %s was published in %d\n", book.getName(), book.authorToString(), book.getPublishingYear());
+                return;
             }
         }
     }
 
     public void changeYearByName(String name, int year) {
-        if (year > 0 && year < LocalDate.now().getYear()) {
-            for (int index = 0; index < bookshelf.length; index++) {
-                if (name.equals(bookshelf[index].getName())) {
-                    bookshelf[index].setPublishingYear(year);
-                    break;
+        if (year > 0 && year <= LocalDate.now().getYear()) {
+            for (Book book : bookshelf) {
+                if (name.equals(book.getName())) {
+                    book.setPublishingYear(year);
+                    return;
                 }
             }
         } else {
-            try {
-                throw new Exception("Invalid value entered");
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            System.out.println("Invalid value entered");
         }
     }
 }
