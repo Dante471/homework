@@ -16,12 +16,16 @@ public class Library {
             }
         }
         System.out.println("Library is full");
-        return bookshelf.length;
+        return -1;
     }
 
     public void addBook(Book book) {
         int index = findFreeIndex();
-        bookshelf[index] = book;
+        if (index >= 0 && index < bookshelf.length) {
+            bookshelf[index] = book;
+        } else {
+            return;
+        }
     }
 
     public void printAll() {
