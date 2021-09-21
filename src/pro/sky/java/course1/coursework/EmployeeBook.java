@@ -30,6 +30,9 @@ public class EmployeeBook {
     public int sumSalary() {
         int sum = 0;
         for (Employee employee : employees) {
+            if (employee == null) {
+                continue;
+            }
             sum += employee.getSalary();
         }
         return sum;
