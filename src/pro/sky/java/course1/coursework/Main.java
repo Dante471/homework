@@ -56,7 +56,7 @@ public class Main {
         separator();
         skyPro.printByMoreSalary(200000);
         separator();
-        System.out.println(skyPro.getMinSalaryByDepartment(3));
+        System.out.println(skyPro.getMinSalaryByDepartment(2));
         separator();
         System.out.println(skyPro.getMaxSalaryByDepartment(1));
         separator();

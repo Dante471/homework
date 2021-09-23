@@ -93,18 +93,8 @@ public class EmployeeBook {
     }
 
     public Employee getMinSalaryByDepartment(int department) {
-        int minSalary = 0;
+        int minSalary = Integer.MAX_VALUE;
         Employee minSalaryEmployee = null;
-        for (Employee employee : employees) {
-            if (employee == null) {
-                continue;
-            }
-            if (department == employee.getDepartment()) {
-                minSalary = employee.getSalary();
-                minSalaryEmployee = employee;
-                break;
-            }
-        }
         for (Employee employee : employees) {
             if (employee == null) {
                 continue;
@@ -124,18 +114,8 @@ public class EmployeeBook {
     }
 
     public Employee getMaxSalaryByDepartment(int department) {
-        int maxSalary = 0;
+        int maxSalary = Integer.MIN_VALUE;
         Employee maxSalaryEmployee = null;
-        for (Employee employee : employees) {
-            if (employee == null) {
-                continue;
-            }
-            if (department == employee.getDepartment()) {
-                maxSalary = employee.getSalary();
-                maxSalaryEmployee = employee;
-                break;
-            }
-        }
         for (Employee employee : employees) {
             if (employee == null) {
                 continue;
