@@ -6,16 +6,6 @@ public class Truck extends MechanicalVehicle {
         super(modelName, wheelsCount);
     }
 
-    @Override
-    public void updateTyre() {
-        super.updateTyre();
-    }
-
-    @Override
-    public void checkEngine() {
-        super.checkEngine();
-    }
-
     public void checkTrailer() {
         System.out.println("Проверяем прицеп");
     }

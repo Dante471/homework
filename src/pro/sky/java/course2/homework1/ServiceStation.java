@@ -1,6 +1,7 @@
 package pro.sky.java.course2.homework1;
 
 public class ServiceStation {
+
     public void check(Bicycle bicycle) {
         System.out.println("Обслуживаем " + bicycle.getModelName());
         for (int i = 0; i < bicycle.getWheelsCount(); i++) {
