@@ -21,6 +21,10 @@ public abstract class Vehicle {
         System.out.println("Меняем покрышку");
     }
 
-    public abstract void check();
+    public void check() {
+        for (int i = 0; i < wheelsCount; i++) {
+            updateTyre();
+        }
+    }
 
 }

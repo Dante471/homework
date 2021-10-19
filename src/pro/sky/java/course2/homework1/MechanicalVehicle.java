@@ -9,4 +9,10 @@ public abstract class MechanicalVehicle extends Vehicle {
     public void checkEngine() {
         System.out.println("Проверям двигатель");
     }
+
+    @Override
+    public void check() {
+        super.check();
+        checkEngine();
+    }
 }
